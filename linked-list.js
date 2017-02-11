@@ -28,7 +28,7 @@ class LinkedList {
 
   /**
    * 向链表尾部添加一个项
-   * @param element
+   * @param element 元素
    */
   append(element) {
     const node = this._Node(element);

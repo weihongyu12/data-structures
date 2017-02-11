@@ -5,7 +5,7 @@
  */
 
 /**
- * 表示栈的class
+ * 栈class
  */
 class Stack {
   constructor() {

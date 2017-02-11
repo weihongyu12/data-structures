@@ -5,7 +5,7 @@
  */
 
 /**
- * 表示队列的class
+ * 队列class
  */
 class Queue {
   constructor() {
@@ -69,6 +69,7 @@ class Queue {
 
 /**
  * 优先队列
+ * @extends Queue
  */
 class PriorityQueue extends Queue {
 
