@@ -1,5 +1,5 @@
 /**
- * @file 队列
+ * @file 链表
  * @author weihongyu <weihongyu12@126.com>
  * @version 1.0.0
  */
