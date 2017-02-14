@@ -50,7 +50,7 @@ class LinkedList {
 
   /**
    * 向链表特定位置插入一个新的项
-   * @param position 位置
+   * @param {number} position 位置
    * @param element 元素
    * @return {boolean}
    */
@@ -85,7 +85,7 @@ class LinkedList {
 
   /**
    * 从链表特定位置移除
-   * @param position 位置
+   * @param {number} position 位置
    * @return {*}
    */
   removeAt(position) {
