@@ -10,7 +10,7 @@
  * @see ECMAScript 6 入门{@link http://es6.ruanyifeng.com/#docs/set-map#Map}
  * @see MDN{@link https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map}
  */
-class Dictionary {
+export default class Dictionary {
   constructor() {
     return new Map();
   }

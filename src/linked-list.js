@@ -7,7 +7,7 @@
 /**
  * 链表class
  */
-class LinkedList {
+export default class LinkedList {
   constructor() {
     this.length = 0;
     this.head   = null;

@@ -7,7 +7,7 @@
 /**
  * 散列表class
  */
-class HashTable {
+export default class HashTable {
   constructor() {
     this.table = [];
   }
