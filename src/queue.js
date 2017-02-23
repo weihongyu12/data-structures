@@ -114,3 +114,5 @@ class PriorityQueue extends Queue {
     }
   }
 }
+
+exports.default = Queue;
