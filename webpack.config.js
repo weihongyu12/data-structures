@@ -2,7 +2,7 @@
  * webpack
  */
 module.exports = {
-  entry : {
+  entry  : {
     bst          : './src/bst.js',
     dictionary   : './src/dictionary.js',
     graph        : './src/graph.js',
@@ -11,8 +11,22 @@ module.exports = {
     queue        : './src/queue.js',
     stack        : './src/stack.js',
   },
-  output: {
+  output : {
     path    : './dist',
     filename: '[name].js'
-  }
+  },
+  module : {
+    rules: [
+      {
+        test   : /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader : 'babel-loader',
+        query  : {
+          presets: ['env']
+        }
+      }
+    ]
+  },
+  devtool: "source-map",
+  target : "node"
 };
