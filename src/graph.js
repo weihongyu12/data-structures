@@ -34,6 +34,11 @@ export default class Graph {
     this.adjList.get(w).push(v);
   }
 
+  /**
+   * 初始化节点颜色
+   * @return {Array}
+   * @private
+   */
   _initializeColor() {
     let color = [];
 
@@ -45,9 +50,35 @@ export default class Graph {
   }
 
   /**
+   * 遍历未访问的节点
+   * @param u 节点
+   * @param color 颜色
+   * @param {function} callback 回调函数
+   * @private
+   */
+  _dfsVisit(u, color, callback) {
+    color[u] = 'grey';
+
+    if (callback) {
+      callback(u);
+    }
+
+    const neighbors = this.adjList.get(u);
+
+    for (let i = 0; i < neighbors.length; i++) {
+      const w = neighbors[i];
+
+      if (color[w] === 'white') {
+        this._dfsVisit(w, color, callback);
+      }
+    }
+    color[u] = 'black';
+  }
+
+  /**
    * 广度优先搜索
-   * @param v
-   * @param callback
+   * @param v 开始遍历的顶点
+   * @param {function} callback 回调函数
    */
   bfs(v, callback) {
 
@@ -78,7 +109,20 @@ export default class Graph {
     }
   }
 
+  /**
+   * 深度优先算法
+   * @param {function} callback 回调函数
+   */
+  dfs(callback) {
+    let color = this._initializeColor();
 
+    for (let i = 0; i < this.vertices.length; i++) {
+
+      if (color[vertices[i]] === 'white') {
+        this._dfsVisit(vertices[i], color, callback);
+      }
+    }
+  }
 
   /**
    * 输出图
@@ -100,26 +144,3 @@ export default class Graph {
     return s;
   }
 }
-
-const graph    = new Graph();
-const vertices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-for (let i = 0; i < vertices.length; i++) {
-  graph.addVertex(vertices[i]);
-}
-graph.addEdge('A', 'B');
-graph.addEdge('A', 'C');
-graph.addEdge('A', 'D');
-graph.addEdge('C', 'D');
-graph.addEdge('C', 'G');
-graph.addEdge('D', 'G');
-graph.addEdge('D', 'H');
-graph.addEdge('B', 'E');
-graph.addEdge('B', 'F');
-graph.addEdge('E', 'I');
-
-console.log(graph.toString());
-
-const print = function printNode(value) {
-  console.log(value)
-};
-graph.bfs(vertices[0], print);
