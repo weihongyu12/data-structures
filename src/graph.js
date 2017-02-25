@@ -9,7 +9,7 @@ import Queue from './queue';
 /**
  * 图class
  */
-class Graph {
+export default class Graph {
   constructor() {
     this.vertices = [];
     this.adjList  = new Map();
@@ -57,8 +57,8 @@ class Graph {
     queue.enqueue(v);
 
     while (!queue.isEmpty()) {
-      const neighbors = this.adjList.get(u);
       let u           = queue.dequeue();
+      const neighbors = this.adjList.get(u);
 
       color[u] = 'grey';
 
@@ -77,6 +77,8 @@ class Graph {
       }
     }
   }
+
+
 
   /**
    * 输出图
@@ -120,4 +122,4 @@ console.log(graph.toString());
 const print = function printNode(value) {
   console.log(value)
 };
-graph.bfs(vertices[0], print());
+graph.bfs(vertices[0], print);
