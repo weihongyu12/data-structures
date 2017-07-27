@@ -39,7 +39,7 @@ export default class PriorityQueue extends Queue {
     } else {
       let added = false;
 
-      for (let [index, element] of this.items) {
+      for (let [index, element] of this.items.entries()) {
         if (queueElement.priority < element.priority) {
           this.items.splice(index, 0, queueElement);
           added = true;
