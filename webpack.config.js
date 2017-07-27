@@ -10,21 +10,22 @@ module.exports = {
     'linked-list'   : './src/linked-list.js',
     queue           : './src/queue.js',
     'priority-queue': './src/priority-queue.js',
+    set             : './src/set.js',
     stack           : './src/stack.js',
   },
   output : {
-    path    : './dist',
-    filename: '[name].js'
+    path    : __dirname + '/dist',
+    filename: '[name].js',
   },
   module : {
     rules: [
       {
         test   : /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader : 'babel-loader'
-      }
-    ]
+        loader : 'babel-loader',
+      },
+    ],
   },
-  devtool: "source-map",
-  target : "node"
+  devtool: 'source-map',
+  target : 'node',
 };
