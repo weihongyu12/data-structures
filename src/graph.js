@@ -42,8 +42,8 @@ export default class Graph {
   _initializeColor() {
     let color = [];
 
-    for (let i = 0; i < this.vertices.length; i++) {
-      color[vertices[i]] = 'white';
+    for (let vertices of this.vertices) {
+      color[vertices] = 'white';
     }
 
     return color;
@@ -65,9 +65,7 @@ export default class Graph {
 
     const neighbors = this.adjList.get(u);
 
-    for (let i = 0; i < neighbors.length; i++) {
-      const w = neighbors[i];
-
+    for (let w of neighbors) {
       if (color[w] === 'white') {
         this._dfsVisit(w, color, callback);
       }
@@ -93,9 +91,7 @@ export default class Graph {
 
       color[u] = 'grey';
 
-      for (let i = 0; i < neighbors.length; i++) {
-        let w = neighbors[i];
-
+      for (let w of neighbors) {
         if (color[w] === 'white') {
           color[w] = 'grey';
           queue.enqueue(w);
@@ -116,10 +112,9 @@ export default class Graph {
   dfs(callback) {
     let color = this._initializeColor();
 
-    for (let i = 0; i < this.vertices.length; i++) {
-
-      if (color[vertices[i]] === 'white') {
-        this._dfsVisit(vertices[i], color, callback);
+    for (let vertices of this.vertices) {
+      if (color[vertices] === 'white') {
+        this._dfsVisit(vertices, color, callback);
       }
     }
   }
@@ -131,12 +126,11 @@ export default class Graph {
   toString() {
     let s = '';
 
-    for (let i = 0; i < this.vertices.length; i++) {
-      s += this.vertices[i] + '->';
-      const neighbors = this.adjList.get(this.vertices[i]);
+    for (let vertices of this.vertices) {
+      s += vertices + '->';
 
-      for (let j = 0; j < neighbors.length; j++) {
-        s += neighbors[j] + ' ';
+      for (let neighbors of this.adjList.get(vertices)) {
+        s += neighbors + ' ';
       }
       s += '\n';
     }

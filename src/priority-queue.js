@@ -22,7 +22,7 @@ export default class PriorityQueue extends Queue {
   _queueElement(element, priority) {
     return {
       element : element,
-      priority: priority
+      priority: priority,
     };
   }
 
@@ -35,13 +35,13 @@ export default class PriorityQueue extends Queue {
     const queueElement = this._queueElement(element, priority);
 
     if (this.isEmpty()) {
-      this.items.push(queueElement)
+      this.items.push(queueElement);
     } else {
       let added = false;
 
-      for (let i = 0; i < this.items.length; i++) {
-        if (queueElement.priority < this.items[i].priority) {
-          this.items.splice(i, 0, queueElement);
+      for (let [index, element] of this.items) {
+        if (queueElement.priority < element.priority) {
+          this.items.splice(index, 0, queueElement);
           added = true;
           break;
         }

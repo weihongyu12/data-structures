@@ -20,8 +20,8 @@ export default class HashTable {
    */
   _loseloseHashCode(key) {
     let hash = 5381;
-    for (let i = 0; i < key.length; i++) {
-      hash = hash * 33 + key.charCodeAt(i);
+    for (let s of key) {
+      hash = hash * 33 + s.charCodeAt(0);
     }
 
     return hash % 1013;
@@ -37,8 +37,8 @@ export default class HashTable {
   _valuePair(key, value) {
     return {
       key,
-      value
-    }
+      value,
+    };
   }
 
   /**
@@ -100,7 +100,7 @@ export default class HashTable {
 
     if (typeof this.table[position] !== 'undefined') {
       if (this.table[position].key === key) {
-         this.table[position] = undefined;
+        this.table[position] = undefined;
       } else {
         let index = position + 1;
 
@@ -119,9 +119,9 @@ export default class HashTable {
    * 打印散列表
    */
   print() {
-    for (let i = 0; i < this.table.length; i++) {
-      if (typeof this.table[i] !== 'undefined') {
-        console.log(`${i}-${this.table[i].key}:${this.table[i].value}`);
+    for (let [index, element] of this.table.entries()) {
+      if (typeof element !== 'undefined') {
+        console.log(`${index}-${element.key}:${element.value}`);
       }
     }
   }
