@@ -9,3 +9,4 @@ out
 dist
 node_modules
 gen
+package-lock.json
